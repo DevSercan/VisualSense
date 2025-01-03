@@ -1,0 +1,5 @@
+# .gitignore
+/src/database/*
+/logs/
+__pycache__/
+*.exe
