@@ -6,3 +6,11 @@
 
 It is a simple project for image matching and color detection.
 ---
+
+## Test Results
+
+### Color Detection Result
+<img src="./test/results/ColorDetector.jpg" alt="Color Detection Result" width="500"/>
+
+### Image Matching Result
+<img src="./test/results/ImageDetector.jpg" alt="Image Matching Result" width="500"/>
