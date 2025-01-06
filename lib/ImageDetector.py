@@ -4,10 +4,19 @@ import time
 
 class ImageDetector:
     def __init__(self, targetImage: np.ndarray, threshold: float = 0.9, saveResult: bool = False):
-        self.targetImage = targetImage
+        self.targetImage = self._normalizeImage(targetImage)
         self.threshold = threshold
         self.saveResult = saveResult
         self.targetHeight, self.targetWidth = self.targetImage.shape[:2]
+
+    def _normalizeImage(self, image: np.ndarray) -> np.ndarray:
+        if len(image.shape) == 3:
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+        if image.dtype != np.uint8:
+            image = cv2.convertScaleAbs(image)
+            
+        return image
 
     def _saveImage(self, image: np.ndarray):
         filename = time.strftime("ImageDetector_%d-%m-%Y_%H-%M-%S.jpg")
@@ -20,6 +29,7 @@ class ImageDetector:
         return image
 
     def detect(self, image: np.ndarray):
+        image = self._normalizeImage(image)
         result = cv2.matchTemplate(image, self.targetImage, cv2.TM_CCOEFF_NORMED)
 
         locations = np.where(result >= self.threshold)
