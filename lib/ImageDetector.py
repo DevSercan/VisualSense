@@ -10,9 +10,12 @@ class ImageDetector:
         self.targetHeight, self.targetWidth = self.targetImage.shape[:2]
 
     def _normalizeImage(self, image: np.ndarray) -> np.ndarray:
+        # If the image is in color, convert it to grayscale
         if len(image.shape) == 3:
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
+        # If the image's data type is not uint8 (e.g., float32 or other types),
+        # Scale the image to the 0-255 range and convert it to uint8 (8-bit format)
         if image.dtype != np.uint8:
             image = cv2.convertScaleAbs(image)
             
