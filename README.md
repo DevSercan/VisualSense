@@ -14,3 +14,12 @@ It is a simple project for image matching and color detection.
 
 ### Image Matching Result
 <img src="./test/results/ImageDetector.jpg" alt="Image Matching Result" width="500"/>
+
+---
+
+## Copyright
+
+Copyright (C) 2025 Sercan Bayrak
+
+This project is licensed under the GNU General Public License v3.0.
+See the LICENSE file for details.
